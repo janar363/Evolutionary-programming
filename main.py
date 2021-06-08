@@ -19,7 +19,7 @@ def bmi(height, weight):
 
 def get_mutation_factor():
     return randint(30, 100) / 100.0
-
+al
 
 class Chromosome:
     def __init__(self, **kwargs):
