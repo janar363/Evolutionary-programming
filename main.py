@@ -110,7 +110,7 @@ def mutate_intelligence(intelligence, mf):
 
 
 def mutate():
-     global chromosomes
+    global chromosomes
     mutated_chromosomes = []
     for chromo in chromosomes:
         height = mutate_height(chromo.height, chromo.mutation_factor)
@@ -123,7 +123,13 @@ def mutate():
 
 
 def cal_fitness():
-    pass
+    for chromo in chromosomes:
+        chromo.intel_score = chromo.intelligence / max_intelligence * 100
+        chromo.bmi_score = 100.0 - chromo.meanBmi / max_mean * 100
+
+        chromo.fitness = chromo.intel_score + chromo.bmi_score
+
+    
 
 
 def print_gen():
@@ -160,6 +166,7 @@ def evolve():
 
     # fitness calculation
     cal_fitness()
+    
 
     # survivor selection
     chromosomes = sorted(chromosomes, key=get_fitness, reverse=True)
