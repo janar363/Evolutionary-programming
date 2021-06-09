@@ -110,7 +110,16 @@ def mutate_intelligence(intelligence, mf):
 
 
 def mutate():
-    pass
+     global chromosomes
+    mutated_chromosomes = []
+    for chromo in chromosomes:
+        height = mutate_height(chromo.height, chromo.mutation_factor)
+        weight = mutate_weight(chromo.weight, chromo.mutation_factor)
+        intelligence = mutate_intelligence(chromo.intelligence, chromo.mutation_factor)
+        new_chromosome = Chromosome(height=height, weight=weight, intelligence=intelligence)
+        mutated_chromosomes.append(new_chromosome)
+
+    chromosomes.extend(mutated_chromosomes)
 
 
 def cal_fitness():
